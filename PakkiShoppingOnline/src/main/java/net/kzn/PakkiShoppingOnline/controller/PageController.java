@@ -14,9 +14,36 @@ public class PageController
 	public ModelAndView index() //model and view is the class which helps the model as well as the view name
 	{
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("greeting","Welcome To Spring-MVC");
+		// mv.addObject("greeting","Welcome To Spring-MVC");
+		mv.addObject("title","Home");
+		mv.addObject("userClickHome","true");  // this value will be true only if index and home will be there
+		
+		
 		return mv;  
 	}
+	@RequestMapping(value= "/about")
+	public ModelAndView about() //model and view is the class which helps the model as well as the view name
+	{
+		ModelAndView mv = new ModelAndView("page");
+		// mv.addObject("greeting","Welcome To Spring-MVC");
+		mv.addObject("title","About Us");
+		mv.addObject("userClickAbout","true");  // this value will be true only if index and home will be there
+		
+		
+		return mv;  
+	}
+	@RequestMapping(value= "/contact")
+	public ModelAndView contact() //model and view is the class which helps the model as well as the view name
+	{
+		ModelAndView mv = new ModelAndView("page");
+		// mv.addObject("greeting","Welcome To Spring-MVC");
+		mv.addObject("title","Contact Us");
+		mv.addObject("userClickContact","true");  // this value will be true only if index and home will be there
+		
+		
+		return mv;  
+	}
+	
 
 }
 

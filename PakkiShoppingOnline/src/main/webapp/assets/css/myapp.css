@@ -1,5 +1,11 @@
-body {
-  padding-top: 70px
+html  /* if write here 100% then automatically calculate from the html code here */ 
+{
+	height:100%;  
+}
+body 
+{
+  padding-top: 70px;
+  height: 100%;
 }
 
 .slide-image {
@@ -42,6 +48,28 @@ body {
   color: #333;
 }
 
-footer {
-  margin: 50px 0;
+footer /* this is footer element nd below is footer class */
+{
+  margin: 0;
 }
+/*
+custom Styling
+*/
+
+.wrapper /* wrapper wraps the entire body elements */ 
+{
+	min-height:100%;
+	position: relative; /* we use relative property to position any element at any location*/
+	
+}
+.content
+{
+	padding-bottom: 60px; /* height of the footer */
+}
+.footer
+{
+	position:absolute;
+	bottom:15;
+	height: 60px;
+}
+
