@@ -19,11 +19,12 @@
                     <li id="about"> <!-- this id will provide it will show in javascript -->
                     	<a href="${contextRoot}/about">About</a>
                     </li>
-                    <li id="viewProduct">
-                    	<a href="${contextRoot}/viewProduct">View Products</a>
-                    </li>
+                    
                     <li id="contact">
                     	<a href="${contextRoot}/contact">Contact</a>
+                    </li>
+                    <li id="viewProduct">
+                    	<a href="${contextRoot}/show/all/products">View Products</a>
                     </li>
                 </ul>
             </div>

@@ -12,6 +12,7 @@
    
    ">
 	<context:component-scan base-package="net.kzn.PakkiShoppingOnline.controller"></context:component-scan>
+	<context:component-scan base-package="net.kzn.pakkiBackend.daoimpl"></context:component-scan> <!-- this is only for the purpose for the backend file upload -->
 	
 	<!-- configuring internal resource view Resolver -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
