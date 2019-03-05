@@ -1,5 +1,12 @@
 package net.kzn.pakkiBackend.dto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Category 
 {
 	
@@ -45,13 +52,36 @@ public class Category
 		this.active = active;
 	}
 	
+	
+	
 	/* 
 	 * private fields
 	 * */
-	private int id;
-	private String name;
-	private String description;
-	private String imageURL;
-	private boolean active = true;  // admin has a right to deactivate this 
+	
+	@Override
+	public String toString() 
+	{
+		return "Category [id=" + id + ", name=" + name + ", description=" + description + ", imageURL=" + imageURL
+				+ ", active=" + active + "]";
+	}
 
+
+
+	@Id  // it will be the primary key in the database
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto generated fields   // to incremented automatically the identity we use this annotation
+	
+	private int id;
+	
+	private String name;
+	
+	private String description;
+	
+	
+	@Column(name = "image_url")
+	private String imageURL;
+	
+	@Column(name = "is_active")
+	private boolean active = true;  // admin has a right to deactivate this 
+	
+	
 }

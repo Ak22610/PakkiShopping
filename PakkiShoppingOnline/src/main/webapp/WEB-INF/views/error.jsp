@@ -5,9 +5,7 @@
 <!-- this is ho we going to add sprin tag library -->
 
 <spring:url var="css" value="/resources/css/" />
-<!-- this resource is coming from dispatcher servlet mapping tag -->
-<spring:url var="js" value="/resources/js/" />
-<spring:url var="images" value="/resources/images/" />
+
 
 
 <!-- ${contextRoot} say - ${greeting} -->
@@ -60,61 +58,57 @@
 
 <body>
 
+
+
 	<div class="wrapper">
-		<!-- here we wrap the whole body under the wrapper class -->
-		<!-- Navigation -->
-		<%@include file="./shared/navbar.jsp"%>
+
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display  -->
+				<div class="navbar-header">
+					<a class="navbar-brand" href="${contextRoot}/home">Home</a>
+
+				</div>
+
+			</div>
+
+		</nav>
 
 		<!-- Page Content -->
 
 		<div class="content">
 
-			<!-- Loading the home content -->
-			<c:if test="${userClickHome == true }">
-				<%@include file="home.jsp"%>
-			</c:if>
+			<div class="container">
 
-			<!-- Load only when user click about -->
-			<c:if test="${userClickAbout == true }">
-				<%@include file="about.jsp"%>
-			</c:if>
+				<div class="row">
 
-			<!-- Load only when user clicks contact -->
-			<c:if test="${userClickContact == true }">
-				<%@include file="contact.jsp"%>
-			</c:if>
+					<div class="col-xs-12">
 
-			<!-- Load only when user clicks contact -->
-			<c:if
-				test="${userClickAllProducts == true or userClickCategoryProducts == true}">
-				<%@include file="listProducts.jsp"%>
-			</c:if>
+						<div class="jumbotron">
 
-			<!-- Load only when user clicks show product -->
-			<c:if
-				test="${userClickShowProduct == true}">
-				<%@include file="singleProduct.jsp"%>
-			</c:if>
+							<h1>${errorTitle}</h1>
+							</hr>
+
+							<blockquote style="word-wrap:break-word">${errorDescription}</blockquote>
+
+						</div>
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
 
 		</div>
 
 		<!-- Footer Comes Here -->
 		<%@include file="./shared/footer.jsp"%>
 
-		<!-- JQuery -->
-		<script src="${js}/jquery.js"></script>
 
-		<!-- BootStrap -->
-		<script src="${js}/bootstrap.js"></script>
-
-		<!-- DataTable Plugin -->
-		<script src="${js}/jquery.dataTables.js"></script>
-
-		<!-- DataTable BootStrap Script -->
-		<script src="${js}/dataTables.bootstrap.js"></script>
-
-		<!-- Self Coded Javascript -->
-		<script src="${js}/myapp.js"></script>
 
 
 	</div>

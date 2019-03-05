@@ -14,7 +14,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages={"net.kzn.pakkiBackend.dto"})
+@ComponentScan(basePackages={"net.kzn.pakkiBackend"})
 @EnableTransactionManagement
 public class HibernateConfig 
 {
@@ -46,7 +46,7 @@ public class HibernateConfig
 	{
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
 		builder.addProperties(getHibernateProperties());
-		builder.scanPackages("net.kzn.pakkiBackend.dto");
+		builder.scanPackages("net.kzn.pakkiBackend");
 		
 		return builder.buildSessionFactory();
 	}

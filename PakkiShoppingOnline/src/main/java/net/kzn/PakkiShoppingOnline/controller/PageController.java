@@ -1,19 +1,30 @@
 package net.kzn.PakkiShoppingOnline.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kzn.PakkiShoppingOnline.Exception.ProductNotFoundException;
 import net.kzn.pakkiBackend.dao.CategoryDAO;
 import net.kzn.pakkiBackend.dto.Category;
+import net.kzn.pakkiBackend.product.dao.ProductDAO;
+import net.kzn.pakkiBackend.product.dto.Product;
 // we have to annotate it by controller anotation
 
 @Controller // it will help all the mapping to this page
-public class PageController {
+public class PageController
+{
+	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
+	
 	@Autowired
 	private CategoryDAO categoryDAO;
+	
+	@Autowired
+	private ProductDAO productDAO;
 
 	@RequestMapping(value = { "/", "/home", "/index" })
 	public ModelAndView index() // model and view is the class which helps the model as well as the view name
@@ -22,6 +33,9 @@ public class PageController {
 		ModelAndView mv = new ModelAndView("page");
 		// mv.addObject("greeting","Welcome To Spring-MVC");
 		mv.addObject("title", "Home");
+		
+		logger.info("Inside PageController index Method - INFO");
+		logger.debug("Inside PageController index Method - DEBUG");
 
 		// passing the list of categories
 		mv.addObject("categories", categoryDAO.list());
@@ -72,7 +86,7 @@ public class PageController {
 	}
 	
 	@RequestMapping(value = "/show/category/{id}/products")
-	public ModelAndView showCategoryProducts(@PathVariable("id")int id) // we are having access to this products 
+	public ModelAndView showCategoryProducts(@PathVariable("id")int id)throws ProductNotFoundException // we are having access to this products 
 	{
 
 		ModelAndView mv = new ModelAndView("page");
@@ -97,6 +111,35 @@ public class PageController {
 
 		mv.addObject("userClickCategoryProducts", true); // this value will be true only if index and home will be there
 		return mv;
+	}
+	
+	/*
+	 * Viewing a single product
+	 */
+	@RequestMapping(value = "/show/{id}/product")
+	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException
+	{
+		ModelAndView mv = new ModelAndView("page");
+		
+		Product product = productDAO.get(id);
+		
+		if(product == null)throw new ProductNotFoundException();
+		
+		
+		//updating the view 
+		product.setViews(product.getViews() + 1);		
+		productDAO.update(product);
+		
+		// --------------------
+		
+		mv.addObject("title", product.getName());
+		mv.addObject("product",product);
+		
+		mv.addObject("userClickShowProduct",true);
+		
+		
+		return mv;
+				
 	}
 
 }
