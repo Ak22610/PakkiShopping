@@ -26,6 +26,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${csrf.headerName}">
 
 <title>Pakki Shopping - ${title}</title>
 
@@ -91,18 +93,34 @@
 			</c:if>
 
 			<!-- Load only when user clicks show product -->
-			<c:if
-				test="${userClickShowProduct == true}">
+			<c:if test="${userClickShowProduct == true}">
 				<%@include file="singleProduct.jsp"%>
 			</c:if>
 
+			<!-- Load only when user clicks manage product -->
+			<c:if test="${userClickManageProducts == true}">
+				<%@include file="manageProducts.jsp"%>
+			</c:if>
+
+			<!-- Load only when user clicks manage product -->
+			<c:if test="${userClickShowCart == true}">
+				<%@include file="cart.jsp"%>
+			</c:if>
+
+
 		</div>
+
+
 
 		<!-- Footer Comes Here -->
 		<%@include file="./shared/footer.jsp"%>
 
 		<!-- JQuery -->
 		<script src="${js}/jquery.js"></script>
+
+		<!-- JQuery Validator-->
+		<script src="${js}/jquery.validate.js"></script>
+
 
 		<!-- BootStrap -->
 		<script src="${js}/bootstrap.js"></script>
@@ -113,8 +131,14 @@
 		<!-- DataTable BootStrap Script -->
 		<script src="${js}/dataTables.bootstrap.js"></script>
 
+		<!-- BootBoxJS -->
+		<script src="${js}/bootbox.min.js"></script>
+
+
+
 		<!-- Self Coded Javascript -->
 		<script src="${js}/myapp.js"></script>
+
 
 
 	</div>

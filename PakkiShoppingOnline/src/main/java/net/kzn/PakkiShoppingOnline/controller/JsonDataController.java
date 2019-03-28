@@ -24,6 +24,13 @@ public class JsonDataController
 	{
 		return productDAO.listActiveProducts();
 	}
+	@RequestMapping("admin/all/products")
+	@ResponseBody
+	public List<Product>getAllProductsForAdmin()
+	{
+		return productDAO.list();
+	}
+	
 	
 	@RequestMapping("/category/{id}/products")
 	@ResponseBody // this is used to send the data in the form of JSON

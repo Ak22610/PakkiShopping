@@ -31,7 +31,7 @@
 					<c:if test="${userClickCategoryProducts == true}">
 
 						<script>
-							window.categoryId='${category.id}';
+							window.categoryId = '${category.id}';
 						</script>
 
 						<ol class="breadcrumb">
@@ -48,35 +48,46 @@
 
 			<div class="col-xs-12">
 
-				<table id="productListTable"
-					class="table table-striped table-borderd">
+				<div class="container-fluid">
 
-					<thead>
+					<div class="table-responsive">
 
-						<tr>
-							<th></th>
-							<th>ID</th>
-							<th>Brand</th>
-							<th>Price</th>
-							<th>Qty. Available</th>
-							<th></th>
+						<table id="productListTable"
+							class="table table-striped table-borderd">
 
-						</tr>
+							<thead>
 
-					</thead>
-					<tfoot>
-						<tr>
-							<th></th>
-							<th>ID</th>
-							<th>Brand</th>
-							<th>Price</th>
-							<th>Qty. Available</th>
-							<th></th>
+								<tr>
+									<th></th>
+									<th>Name</th>
+									<th>Brand</th>
+									<th>Price</th>
+									<th>Qty. Available</th>
+									<th></th>
 
-						</tr>
+								</tr>
 
-					</tfoot>
-				</table>
+							</thead>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>Name</th>
+									<th>Brand</th>
+									<th>Price</th>
+									<th>Qty. Available</th>
+									<th></th>
+
+								</tr>
+
+							</tfoot>
+						</table>
+
+					</div>
+
+				</div>
+
+
+
 
 			</div>
 		</div>

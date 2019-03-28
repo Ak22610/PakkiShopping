@@ -26,7 +26,7 @@ public class HibernateConfig
 	private final static String DATABASE_PASSWORD = "";
 
 	// dataSource bean will be available 
-	@Bean
+	@Bean("dataSource")
 	public DataSource getDataSource()
 	{
 		//Providing the database connection information 
@@ -60,6 +60,8 @@ public class HibernateConfig
 		properties.put("hibernate.show_sql","true");
 		properties.put("hibernate.format_sql","true");
 		
+		/*properties.put("hibernate.hbm2ddl.auto","update");*/ // change create it to update only bcuss it will not delete and recreate table in the console
+		/*properties.put("hibernate.hbm2ddl.auto","update");*/  
 		
 		return properties;
 	}
